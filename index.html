@@ -246,86 +246,82 @@
             color: var(--dark);
         }
 
-        /* ===== HERO SECTION ===== */
-        .hero {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding-top: 80px;
-            overflow: hidden;
-            background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-        }
+       /* ===== HERO SECTION ===== */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 80px;
+    overflow: hidden;
+}
 
-        #hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
+#hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* This puts video BEHIND content */
+}
 
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2; /* This keeps text ABOVE video */
+}
 
-        /* Add overlay for better text readability */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(42, 107, 124, 0.6) 0%, rgba(30, 74, 95, 0.7) 100%);
-            z-index: 1;
-        }
+/* Add overlay for better text readability */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(42, 107, 124, 0.6) 0%, rgba(30, 74, 95, 0.7) 100%);
+    z-index: 1; /* Overlay sits between video and text */
+}
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(transparent, white);
-            z-index: 1;
-        }
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(transparent, white);
+    z-index: 1;
+}
 
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            text-transform: none;
-            letter-spacing: -0.5px;
-            line-height: 1.1;
-        }
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-transform: none;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+}
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-            opacity: 0.9;
-        }
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 300;
+    opacity: 0.9;
+}
 
-        .hero-btns {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
+.hero-btns {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}}
         /* ===== FEATURES SECTION ===== */
         .features {
             padding: 100px 0;
@@ -1091,22 +1087,48 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section class="hero" id="home">
-        <!-- Video Background -->
-        <video autoplay muted loop id="hero-video">
-            <source src="videos/Diani.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        
-        <div class="container hero-content">
-            <h1 class="fade-in">Discover Kenya's Coastal Wonders</h1>
-            <p class="fade-in delay-1">Experience the magic of Kenya's coastal heritage with our premium guided tours. From pristine beaches of Diani to the historic streets of Lamu, create memories that last a lifetime.</p>
+   
+	<!-- <section class="hero" id="home">
+    <!-- ADD THIS VIDEO ELEMENT -->
+   <!-- <video autoplay muted loop id="hero-video">
+        <source src="videos/Diani.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <div class="container hero-content"> 
+        <!-- Your existing hero content remains here -->
+       <!-- <h1 class="fade-in">Discover Kenya's Coastal Wonders</h1>
+        <!-- ... rest of your hero content -->
+   <!-- </div>
+</section> -->
+	
+        <!--<div class="container hero-content">
+            <h1 class="fade-in">Discover Coastal Wonders</h1>
+            <p class="fade-in delay-1">Experience the magic of coastal heritage with our premium guided tours. From pristine beaches to historic lighthouses, create memories that last a lifetime.</p>
             <div class="hero-btns fade-in delay-2">
                 <a href="#tours" class="btn"><i class="fas fa-compass"></i> Explore Tours</a>
                 <a href="#" class="btn btn-secondary book-now-hero"><i class="fas fa-calendar-alt"></i> Book Now</a>
             </div>
         </div>
-    </section>
+    </section> -->
+	
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <!-- Video Background -->
+    <video autoplay muted loop id="hero-video">
+        <source src="videos/Diani.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <div class="container hero-content">
+        <h1 class="fade-in">Discover Kenya's Coastal Wonders</h1>
+        <p class="fade-in delay-1">Experience the magic of Kenya's coastal heritage with our premium guided tours. From pristine beaches of Diani to the historic streets of Lamu, create memories that last a lifetime.</p>
+        <div class="hero-btns fade-in delay-2">
+            <a href="#tours" class="btn"><i class="fas fa-compass"></i> Explore Tours</a>
+            <a href="#" class="btn btn-secondary book-now-hero"><i class="fas fa-calendar-alt"></i> Book Now</a>
+        </div>
+    </div>
+</section>
 
     <!-- FEATURES SECTION -->
     <section class="features">
@@ -1150,7 +1172,7 @@
             </div>
             <div class="tours-grid">
                 <div class="tour-card fade-in">
-                    <div class="tour-img" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="tour-img" style="background-image: url('images/DianiAriel.jpg')">
                         <span class="tour-badge">Most Popular</span>
                     </div>
                     <div class="tour-content">
@@ -1167,7 +1189,7 @@
                 </div>
                 
                 <div class="tour-card fade-in delay-1">
-                    <div class="tour-img" style="background-image: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1334&q=80')">
+                    <div class="tour-img" style="background-image: url('images/Kiunga-Marine-life.jpg')">
                         <span class="tour-badge">Family Friendly</span>
                     </div>
                     <div class="tour-content">
@@ -1184,5 +1206,576 @@
                 </div>
                 
                 <div class="tour-card fade-in delay-2">                   
-                    <div class="tour-img" style="background-image: url('https://images.unsplash.com/photo-1597074866923-dc0589150358?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8
+					<div class="tour-img" style="background-image: url('images/Oldtown1.jpg')">
+                        <span class="tour-badge">Sunset Special</span>
+                    </div>
+                    <div class="tour-content">
+                        <h3>Mombasa Old Town & Dining</h3>
+                        <p>Enjoy breathtaking coastal sunsets followed by a gourmet seafood dinner.</p>
+                        <div class="tour-meta">
+                            <span><i class="far fa-clock"></i> 3 Hours</span>
+                            <span><i class="fas fa-user-friends"></i> Romantic</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Cliffside</span>
+                        </div>
+                        <div class="tour-price">$120 <span class="tour-price-note">per couple</span></div>
+                        <a href="#" class="btn btn-accent book-tour-btn" data-tour="Coastal Sunset & Dining"><i class="fas fa-ticket-alt"></i> Book Now</a>
+                    </div>
+                </div>
+				
+				 <div class="tour-card fade-in delay-2">                   
+					<div class="tour-img" style="background-image: url('images/FortJesus.jpg')">
+                        <span class="tour-badge">Sunset Special</span>
+                    </div>
+                    <div class="tour-content">
+                        <h3>Fort Jesus</h3>
+                        <p>Enjoy breathtaking coastal sunsets followed by a gourmet seafood dinner.</p>
+                        <div class="tour-meta">
+                            <span><i class="far fa-clock"></i> 3 Hours</span>
+                            <span><i class="fas fa-user-friends"></i> Romantic</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Cliffside</span>
+                        </div>
+                        <div class="tour-price">$120 <span class="tour-price-note">per couple</span></div>
+                        <a href="#" class="btn btn-accent book-tour-btn" data-tour="Coastal Sunset & Dining"><i class="fas fa-ticket-alt"></i> Book Now</a>
+                    </div>
+                </div>
+				
+				
+				
+				
+				
+				
+            </div>
+        </div>
+    </section>
 
+    <!-- DESTINATIONS SECTION -->
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Coastal Destinations</h2>
+                <p>Discover the stunning locations featured in our coastal heritage tours.</p>
+            </div>
+            <div class="destinations-grid">
+                <div class="destination-card fade-in">
+                    <div class="destination-img" style="background-image: url('images/Lamumain.jpg')"></div>
+                    <div class="destination-overlay">
+                        <h3>Lamu</h3>
+                        <p>A Unesco heritage City</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in delay-1">
+                   <!-- <div class="destination-img" style="background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div> -->
+                    <div class="destination-img" style="background-image: url('images/wasini.jpg')"></div>
+					<div class="destination-overlay">
+                        <h3>Wasini Island</h3>
+                        <p>Historic fishing village with charming seaside cottages</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in delay-2">
+                    <div class="destination-img" style="background-image: url('images/CurioMarket.jpg')"></div>
+                    <div class="destination-overlay">
+                        <h3>Curio Market</h3>
+                        <p>Explore local Craftmanship</p>
+                    </div>
+                </div>
+                
+                <div class="destination-card fade-in delay-3">
+                    <div class="destination-img" style="background-image: url('images/lighthouse.jpg')"></div>
+                    <div class="destination-overlay">
+                        <h3>Lighthouse Point</h3>
+                        <p>Iconic 19th century lighthouse with breathtaking views</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Photo Gallery</h2>
+                <p>Explore stunning visuals from our coastal tours and destinations.</p>
+            </div>
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="beaches">Beaches</button>
+                <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+                <button class="filter-btn" data-filter="lighthouses">Lighthouses</button>
+                <button class="filter-btn" data-filter="sunset">Sunsets</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="beaches">
+                    <img src="images/beach1.jpg" alt="Sandy Beach">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="wildlife">
+                    <img src="images/Fordhani.jpg" alt="Coastal Wildlife">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="lighthouses">
+                    <img src="images/wasinibridge.jpg" alt="Lighthouse">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="sunset">
+                    <img src="images/wasiniboat.jpg" alt="Coastal Sunset">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="beaches">
+                    <img src="images/oldtown3.jpg" alt="Rocky Shore">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="wildlife">
+                    <img src="images/dianiafricapool.jpg" alt="Seabirds">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Your Journey, Our Passion</h2>
+                <p>At Coastal Heritage Safaris, we are more than just a team — we’re a vibrant collective of locals and global explorers, bonded by decades of experience across various industries and a shared love for creating unforgettable travel experiences.
+
+With deep roots along the Kenyan coast and insider knowledge of its best-kept secrets, we don’t just take you places — we curate immersive journeys that celebrate the culture, beauty, and soul of this stunning region.
+
+Today, getting to the coast has never been easier. With direct international flights now arriving from Europe, the Middle East, and Asia — and vastly improved local travel options including the SGR train, modern road networks, and domestic flights — Kenya’s coastal paradise is more accessible than ever.
+
+Whether you're planning a family getaway, a romantic escape, a business retreat, or a solo adventure, we’re here to tailor every detail to match your vision. From airport transfers to personalized excursions, we handle everything with passion, precision, and a warm coastal smile..</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial fade-in">
+                    <p class="testimonial-text">""At Coastal Heritage Tours, we don’t just plan trips — we craft soulful experiences that connect people to the heart of the Kenyan coast with care, authenticity, and unwavering passion."!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-img" style="background-image: url('images/BoraPeakock.jpg')"></div>
+                        <div class="author-info">
+                            <h4>Yusuf Mambo</h4>
+                            <p>Chairman</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="fade-in">Ready for Your Coastal Adventure?</h2>
+                <p class="fade-in delay-1">Contact us today to start planning your dream coastal tour. Our expert team will help you create a customized itinerary that matches your interests.</p>
+                <div class="fade-in delay-2">
+                    <a href="#" class="btn book-now-cta"><i class="fas fa-phone-alt"></i> Call Us: (+254) 796 786 786</a>
+                    <a href="#" class="btn btn-secondary book-now-cta"><i class="fas fa-envelope"></i> Send a Message</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Coastal Heritage Tours</h3>
+                    <p>Creating unforgettable coastal experiences that connect you with maritime history, culture, and natural beauty.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#tours">Tours</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Nkuruma Drive, Old Town Mombasa</li>
+                        <li><i class="fas fa-phone"></i> (+254) 796 786 786</li>
+                        <li><i class="fas fa-envelope"></i> info@coastalheritagetours.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for coastal travel tips, special offers, and tour updates.</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Your Email" style="padding: 12px; width: 100%; margin-bottom: 10px; border-radius: 4px; border: none;">
+                        <button type="submit" class="btn" style="width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Coastal Heritage Tours. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for coastal enthusiasts</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOOKING MODAL -->
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Book Your Coastal Tour</h2>
+            <form id="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="booking-name">Full Name</label>
+                        <input type="text" id="booking-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-email">Email Address</label>
+                        <input type="email" id="booking-email" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="booking-phone">Phone Number</label>
+                        <input type="tel" id="booking-phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-date">Preferred Tour Date</label>
+                        <input type="date" id="booking-date" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="booking-tour">Select Tour</label>
+                    <select id="booking-tour" class="form-control" required>
+                        <option value="">Choose a tour</option>
+                        <option value="Historic Lighthouse Tour">Historic Lighthouse Tour - $89</option>
+                        <option value="Marine Wildlife Adventure">Marine Wildlife Adventure - $75</option>
+                        <option value="Coastal Sunset & Dining">Coastal Sunset & Dining - $120</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="booking-guests">Number of Guests</label>
+                    <input type="number" id="booking-guests" class="form-control" min="1" max="20" required>
+                </div>
+                <div class="form-group">
+                    <label for="booking-notes">Special Requests</label>
+                    <textarea id="booking-notes" class="form-control" placeholder="Any dietary restrictions, accessibility needs, or special requests..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Complete Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- GALLERY LIGHTBOX -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <div class="lightbox-nav">
+            <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <img class="lightbox-content" src="" alt="Gallery Image">
+    </div>
+
+    <script>
+        // Enhanced Navigation and Interactive Features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const header = document.getElementById('header');
+            
+            // Modal Elements
+            const bookingModal = document.getElementById('booking-modal');
+            const closeModalBtn = document.querySelector('.close-modal');
+            const bookingForm = document.getElementById('booking-form');
+            
+            // Lightbox Elements
+            const lightbox = document.getElementById('lightbox');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const lightboxContent = document.querySelector('.lightbox-content');
+            const lightboxPrev = document.querySelector('.lightbox-prev');
+            const lightboxNext = document.querySelector('.lightbox-next');
+            
+            // Gallery Elements
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Book Now Buttons
+            const bookNowBtns = document.querySelectorAll('.book-now-nav, .book-now-hero, .book-now-cta, .book-tour-btn');
+            
+            // Mobile menu toggle
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                // Toggle icon between bars and times
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close mobile menu when clicking on a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Active nav link highlighting
+            window.addEventListener('scroll', function() {
+                let current = '';
+                const sections = document.querySelectorAll('section');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('active');
+                    }
+                });
+            };
+            
+            // Initial check
+            fadeInOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // Form submission handlers
+            const newsletterForm = document.getElementById('newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // In a real application, you would send the email to a newsletter service
+                    alert('Thank you for subscribing to our newsletter!');
+                    this.reset();
+                });
+            }
+            
+            // BOOKING MODAL FUNCTIONALITY
+            function openBookingModal(tourName = '') {
+                if (tourName) {
+                    document.getElementById('booking-tour').value = tourName;
+                }
+                bookingModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeBookingModal() {
+                bookingModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Book Now button handlers
+            bookNowBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tourName = this.getAttribute('data-tour') || '';
+                    openBookingModal(tourName);
+                });
+            });
+            
+            // Close modal when clicking on X
+            closeModalBtn.addEventListener('click', closeBookingModal);
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === bookingModal) {
+                    closeBookingModal();
+                }
+            });
+            
+            // Booking form submission
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = {
+                    name: document.getElementById('booking-name').value,
+                    email: document.getElementById('booking-email').value,
+                    phone: document.getElementById('booking-phone').value,
+                    date: document.getElementById('booking-date').value,
+                    tour: document.getElementById('booking-tour').value,
+                    guests: document.getElementById('booking-guests').value,
+                    notes: document.getElementById('booking-notes').value
+                };
+                
+                // In a real application, you would send this data to a server
+                console.log('Booking submitted:', formData);
+                
+                // Show success message
+                alert(`Thank you for your booking request, ${formData.name}! We will contact you at ${formData.email} to confirm your ${formData.tour} for ${formData.date}.`);
+                
+                // Reset form and close modal
+                this.reset();
+                closeBookingModal();
+            });
+            
+            // GALLERY FUNCTIONALITY
+            // Filter gallery items
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active filter button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Show/hide gallery items based on filter
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // LIGHTBOX FUNCTIONALITY
+            let currentImageIndex = 0;
+            const galleryImages = Array.from(galleryItems).map(item => item.querySelector('img').src);
+            
+            function openLightbox(index) {
+                currentImageIndex = index;
+                lightboxContent.src = galleryImages[currentImageIndex];
+                lightbox.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeLightbox() {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            function showNextImage() {
+                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+                lightboxContent.src = galleryImages[currentImageIndex];
+            }
+            
+            function showPrevImage() {
+                currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+                lightboxContent.src = galleryImages[currentImageIndex];
+            }
+            
+            // Open lightbox when clicking on gallery items
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    openLightbox(index);
+                });
+            });
+            
+            // Lightbox controls
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxNext.addEventListener('click', showNextImage);
+            lightboxPrev.addEventListener('click', showPrevImage);
+            
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // Keyboard navigation for lightbox
+            document.addEventListener('keydown', function(e) {
+                if (lightbox.style.display === 'block') {
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                    } else if (e.key === 'ArrowRight') {
+                        showNextImage();
+                    } else if (e.key === 'ArrowLeft') {
+                        showPrevImage();
+                    }
+                }
+            });
+            
+            // Add some interactive elements to tour cards
+            const tourCards = document.querySelectorAll('.tour-card');
+            tourCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(-10px) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
