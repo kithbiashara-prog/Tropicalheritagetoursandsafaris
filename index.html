@@ -246,82 +246,90 @@
             color: var(--dark);
         }
 
-       /* ===== HERO SECTION ===== */
-.hero {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    color: white;
-    text-align: center;
-    padding-top: 80px;
-    overflow: hidden;
-}
+        /* ===== HERO SECTION - FIXED VERSION ===== */
+        /* Main hero container - sets up the full viewport height section */
+        .hero {
+            height: 100vh; /* Full viewport height */
+            position: relative; /* Allows absolute positioning of child elements */
+            display: flex; /* Flexbox for centering content */
+            align-items: center; /* Vertically centers content */
+            color: white; /* Text color for hero section */
+            text-align: center; /* Centers text */
+            padding-top: 80px; /* Accounts for fixed header height */
+            overflow: hidden; /* Prevents content from overflowing */
+        }
 
-#hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1; /* This puts video BEHIND content */
-}
+        /* Video background styling - THIS IS THE KEY FIX */
+        #hero-video {
+            position: absolute; /* Positioned relative to .hero container */
+            top: 0;
+            left: 0;
+            width: 100%; /* Full width of container */
+            height: 100%; /* Full height of container */
+            object-fit: cover; /* Ensures video covers entire area without distortion */
+            z-index: 0; /* FIXED: Changed from -1 to 0 - places video behind overlay but above background */
+        }
 
-.hero-content {
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2; /* This keeps text ABOVE video */
-}
+        /* Content container - holds all text and buttons */
+        .hero-content {
+            max-width: 900px; /* Limits content width for readability */
+            margin: 0 auto; /* Centers horizontally */
+            position: relative; /* Creates positioning context */
+            z-index: 2; /* CRITICAL: Places content ABOVE video and overlay */
+        }
 
-/* Add overlay for better text readability */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(42, 107, 124, 0.6) 0%, rgba(30, 74, 95, 0.7) 100%);
-    z-index: 1; /* Overlay sits between video and text */
-}
+        /* Dark overlay for better text readability - sits between video and text */
+        .hero::before {
+            content: ''; /* Required for pseudo-element to display */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(42, 107, 124, 0.6) 0%, rgba(30, 74, 95, 0.7) 100%);
+            z-index: 1; /* IMPORTANT: Sits above video (z-index: 0) but below content (z-index: 2) */
+        }
 
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(transparent, white);
-    z-index: 1;
-}
+        /* Gradient fade at bottom for smooth transition to next section */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, white);
+            z-index: 1;
+        }
 
-.hero h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    text-transform: none;
-    letter-spacing: -0.5px;
-    line-height: 1.1;
-}
+        /* Hero heading styling */
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-transform: none;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
 
-.hero p {
-    font-size: 1.3rem;
-    margin-bottom: 40px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 300;
-    opacity: 0.9;
-}
+        /* Hero paragraph styling */
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            opacity: 0.9;
+        }
 
-.hero-btns {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}}
+        /* Container for hero buttons */
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         /* ===== FEATURES SECTION ===== */
         .features {
             padding: 100px 0;
@@ -457,6 +465,12 @@
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 20px;
+        }
+
+        .tour-price-note {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-light);
         }
 
         /* ===== DESTINATIONS SECTION ===== */
@@ -900,6 +914,10 @@
             opacity: 0.8;
         }
 
+        .footer-column ul {
+            list-style: none;
+        }
+
         .footer-column ul li {
             margin-bottom: 12px;
         }
@@ -1086,49 +1104,30 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-   
-	<!-- <section class="hero" id="home">
-    <!-- ADD THIS VIDEO ELEMENT -->
-   <!-- <video autoplay muted loop id="hero-video">
-        <source src="videos/Diani.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    
-    <div class="container hero-content"> 
-        <!-- Your existing hero content remains here -->
-       <!-- <h1 class="fade-in">Discover Kenya's Coastal Wonders</h1>
-        <!-- ... rest of your hero content -->
-   <!-- </div>
-</section> -->
-	
-        <!--<div class="container hero-content">
-            <h1 class="fade-in">Discover Coastal Wonders</h1>
-            <p class="fade-in delay-1">Experience the magic of coastal heritage with our premium guided tours. From pristine beaches to historic lighthouses, create memories that last a lifetime.</p>
+    <!-- HERO SECTION WITH VIDEO BACKGROUND -->
+    <section class="hero" id="home">
+        <!-- 
+            VIDEO ELEMENT - Background video 
+            - autoplay: starts playing automatically when page loads
+            - muted: REQUIRED for autoplay to work in most browsers
+            - loop: video repeats indefinitely
+            - playsinline: plays inline on mobile devices (iOS requirement)
+        -->
+        <video autoplay muted loop playsinline id="hero-video">
+            <source src="videos/diani.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Hero content container with text and buttons -->
+        <div class="container hero-content">
+            <h1 class="fade-in">Discover Kenya's Coastal Wonders</h1>
+            <p class="fade-in delay-1">Experience the magic of Kenya's coastal heritage with our premium guided tours. From pristine beaches of Diani to the historic streets of Lamu, create memories that last a lifetime.</p>
             <div class="hero-btns fade-in delay-2">
                 <a href="#tours" class="btn"><i class="fas fa-compass"></i> Explore Tours</a>
                 <a href="#" class="btn btn-secondary book-now-hero"><i class="fas fa-calendar-alt"></i> Book Now</a>
             </div>
         </div>
-    </section> -->
-	
-<!-- HERO SECTION -->
-<section class="hero" id="home">
-    <!-- Video Background -->
-    <video autoplay muted loop id="hero-video">
-        <source src="videos/diani.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    
-    <div class="container hero-content">
-        <h1 class="fade-in">Discover Kenya's Coastal Wonders</h1>
-        <p class="fade-in delay-1">Experience the magic of Kenya's coastal heritage with our premium guided tours. From pristine beaches of Diani to the historic streets of Lamu, create memories that last a lifetime.</p>
-        <div class="hero-btns fade-in delay-2">
-            <a href="#tours" class="btn"><i class="fas fa-compass"></i> Explore Tours</a>
-            <a href="#" class="btn btn-secondary book-now-hero"><i class="fas fa-calendar-alt"></i> Book Now</a>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- FEATURES SECTION -->
     <section class="features">
@@ -1206,7 +1205,7 @@
                 </div>
                 
                 <div class="tour-card fade-in delay-2">                   
-					<div class="tour-img" style="background-image: url('images/Oldtown1.jpg')">
+                    <div class="tour-img" style="background-image: url('images/Oldtown1.jpg')">
                         <span class="tour-badge">Sunset Special</span>
                     </div>
                     <div class="tour-content">
@@ -1221,29 +1220,23 @@
                         <a href="#" class="btn btn-accent book-tour-btn" data-tour="Coastal Sunset & Dining"><i class="fas fa-ticket-alt"></i> Book Now</a>
                     </div>
                 </div>
-				
-				 <div class="tour-card fade-in delay-2">                   
-					<div class="tour-img" style="background-image: url('images/FortJesus.jpg')">
-                        <span class="tour-badge">Sunset Special</span>
+                
+                <div class="tour-card fade-in delay-2">                   
+                    <div class="tour-img" style="background-image: url('images/FortJesus.jpg')">
+                        <span class="tour-badge">Historical</span>
                     </div>
                     <div class="tour-content">
                         <h3>Fort Jesus</h3>
-                        <p>Enjoy breathtaking coastal sunsets followed by a gourmet seafood dinner.</p>
+                        <p>Discover the UNESCO World Heritage Site and immerse yourself in centuries of coastal history.</p>
                         <div class="tour-meta">
                             <span><i class="far fa-clock"></i> 3 Hours</span>
-                            <span><i class="fas fa-user-friends"></i> Romantic</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Cliffside</span>
+                            <span><i class="fas fa-user-friends"></i> Educational</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Mombasa</span>
                         </div>
-                        <div class="tour-price">$120 <span class="tour-price-note">per couple</span></div>
-                        <a href="#" class="btn btn-accent book-tour-btn" data-tour="Coastal Sunset & Dining"><i class="fas fa-ticket-alt"></i> Book Now</a>
+                        <div class="tour-price">$65 <span class="tour-price-note">per person</span></div>
+                        <a href="#" class="btn btn-accent book-tour-btn" data-tour="Fort Jesus Historical Tour"><i class="fas fa-ticket-alt"></i> Book Now</a>
                     </div>
                 </div>
-				
-				
-				
-				
-				
-				
             </div>
         </div>
     </section>
@@ -1260,14 +1253,13 @@
                     <div class="destination-img" style="background-image: url('images/Lamumain.jpg')"></div>
                     <div class="destination-overlay">
                         <h3>Lamu</h3>
-                        <p>A Unesco heritage City</p>
+                        <p>A UNESCO heritage City</p>
                     </div>
                 </div>
                 
                 <div class="destination-card fade-in delay-1">
-                   <!-- <div class="destination-img" style="background-image: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div> -->
                     <div class="destination-img" style="background-image: url('images/wasini.jpg')"></div>
-					<div class="destination-overlay">
+                    <div class="destination-overlay">
                         <h3>Wasini Island</h3>
                         <p>Historic fishing village with charming seaside cottages</p>
                     </div>
@@ -1352,17 +1344,11 @@
         <div class="container">
             <div class="section-title">
                 <h2>Your Journey, Our Passion</h2>
-                <p>At Coastal Heritage Safaris, we are more than just a team — we’re a vibrant collective of locals and global explorers, bonded by decades of experience across various industries and a shared love for creating unforgettable travel experiences.
-
-With deep roots along the Kenyan coast and insider knowledge of its best-kept secrets, we don’t just take you places — we curate immersive journeys that celebrate the culture, beauty, and soul of this stunning region.
-
-Today, getting to the coast has never been easier. With direct international flights now arriving from Europe, the Middle East, and Asia — and vastly improved local travel options including the SGR train, modern road networks, and domestic flights — Kenya’s coastal paradise is more accessible than ever.
-
-Whether you're planning a family getaway, a romantic escape, a business retreat, or a solo adventure, we’re here to tailor every detail to match your vision. From airport transfers to personalized excursions, we handle everything with passion, precision, and a warm coastal smile..</p>
+                <p>At Coastal Heritage Safaris, we are more than just a team — we're a vibrant collective of locals and global explorers, bonded by decades of experience across various industries and a shared love for creating unforgettable travel experiences.</p>
             </div>
             <div class="testimonials-slider">
                 <div class="testimonial fade-in">
-                    <p class="testimonial-text">""At Coastal Heritage Tours, we don’t just plan trips — we craft soulful experiences that connect people to the heart of the Kenyan coast with care, authenticity, and unwavering passion."!"</p>
+                    <p class="testimonial-text">"At Coastal Heritage Tours, we don't just plan trips — we craft soulful experiences that connect people to the heart of the Kenyan coast with care, authenticity, and unwavering passion."</p>
                     <div class="testimonial-author">
                         <div class="author-img" style="background-image: url('images/BoraPeakock.jpg')"></div>
                         <div class="author-info">
@@ -1382,7 +1368,7 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                 <h2 class="fade-in">Ready for Your Coastal Adventure?</h2>
                 <p class="fade-in delay-1">Contact us today to start planning your dream coastal tour. Our expert team will help you create a customized itinerary that matches your interests.</p>
                 <div class="fade-in delay-2">
-                    <a href="#" class="btn book-now-cta"><i class="fas fa-phone-alt"></i> Call Us: (+254) 796 786 786</a>
+                    <a href="tel:+254796786786" class="btn book-now-cta"><i class="fas fa-phone-alt"></i> Call Us: (+254) 796 786 786</a>
                     <a href="#" class="btn btn-secondary book-now-cta"><i class="fas fa-envelope"></i> Send a Message</a>
                 </div>
             </div>
@@ -1468,9 +1454,10 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                     <label for="booking-tour">Select Tour</label>
                     <select id="booking-tour" class="form-control" required>
                         <option value="">Choose a tour</option>
-                        <option value="Historic Lighthouse Tour">Historic Lighthouse Tour - $89</option>
-                        <option value="Marine Wildlife Adventure">Marine Wildlife Adventure - $75</option>
-                        <option value="Coastal Sunset & Dining">Coastal Sunset & Dining - $120</option>
+                        <option value="Diani Beach">Diani Beach - $89</option>
+                        <option value="Kiunga Marine Adventure">Kiunga Marine Adventure - $75</option>
+                        <option value="Mombasa Old Town & Dining">Mombasa Old Town & Dining - $120</option>
+                        <option value="Fort Jesus">Fort Jesus - $65</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -1496,38 +1483,47 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
         <img class="lightbox-content" src="" alt="Gallery Image">
     </div>
 
+    <!-- JAVASCRIPT -->
     <script>
-        // Enhanced Navigation and Interactive Features
+        /* ========================================
+           MAIN JAVASCRIPT - Enhanced Navigation and Interactive Features
+           ======================================== */
+        
         document.addEventListener('DOMContentLoaded', function() {
-            // Elements
+            
+            /* --- ELEMENT SELECTIONS --- */
+            // Navigation elements
             const mobileToggle = document.querySelector('.mobile-toggle');
             const navMenu = document.querySelector('.nav-menu');
             const navLinks = document.querySelectorAll('.nav-link');
             const header = document.getElementById('header');
             
-            // Modal Elements
+            // Modal elements
             const bookingModal = document.getElementById('booking-modal');
             const closeModalBtn = document.querySelector('.close-modal');
             const bookingForm = document.getElementById('booking-form');
             
-            // Lightbox Elements
+            // Lightbox elements for image gallery
             const lightbox = document.getElementById('lightbox');
             const lightboxClose = document.querySelector('.lightbox-close');
             const lightboxContent = document.querySelector('.lightbox-content');
             const lightboxPrev = document.querySelector('.lightbox-prev');
             const lightboxNext = document.querySelector('.lightbox-next');
             
-            // Gallery Elements
+            // Gallery filter elements
             const galleryItems = document.querySelectorAll('.gallery-item');
             const filterBtns = document.querySelectorAll('.filter-btn');
             
-            // Book Now Buttons
+            // All "Book Now" buttons throughout the page
             const bookNowBtns = document.querySelectorAll('.book-now-nav, .book-now-hero, .book-now-cta, .book-tour-btn');
             
-            // Mobile menu toggle
+            
+            /* --- MOBILE MENU TOGGLE --- */
+            // Opens/closes mobile navigation menu
             mobileToggle.addEventListener('click', function() {
                 navMenu.classList.toggle('active');
-                // Toggle icon between bars and times
+                
+                // Toggle hamburger icon to X icon
                 const icon = this.querySelector('i');
                 if (icon.classList.contains('fa-bars')) {
                     icon.classList.remove('fa-bars');
@@ -1538,7 +1534,9 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                 }
             });
             
-            // Close mobile menu when clicking on a link
+            
+            /* --- CLOSE MOBILE MENU ON LINK CLICK --- */
+            // Automatically closes mobile menu when user clicks a navigation link
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     navMenu.classList.remove('active');
@@ -1547,7 +1545,9 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                 });
             });
             
-            // Header scroll effect
+            
+            /* --- HEADER SCROLL EFFECT --- */
+            // Adds shadow and compresses header when user scrolls down
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 100) {
                     header.classList.add('header-scrolled');
@@ -1556,7 +1556,9 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                 }
             });
             
-            // Smooth scrolling for anchor links
+            
+            /* --- SMOOTH SCROLLING --- */
+            // Smooth scroll animation for all anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -1567,18 +1569,21 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: targetElement.offsetTop - 80, // Offset for fixed header
                             behavior: 'smooth'
                         });
                     }
                 });
             });
             
-            // Active nav link highlighting
+            
+            /* --- ACTIVE NAV LINK HIGHLIGHTING --- */
+            // Highlights the current section in navigation as user scrolls
             window.addEventListener('scroll', function() {
                 let current = '';
                 const sections = document.querySelectorAll('section');
                 
+                // Find which section is currently in view
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
@@ -1587,6 +1592,7 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                     }
                 });
                 
+                // Update active class on navigation links
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${current}`) {
@@ -1595,7 +1601,9 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                 });
             });
             
-            // Animation on scroll
+            
+            /* --- SCROLL ANIMATIONS --- */
+            // Fade-in animation for elements as they come into viewport
             const fadeElements = document.querySelectorAll('.fade-in');
             
             const fadeInOnScroll = function() {
@@ -1609,38 +1617,45 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                 });
             };
             
-            // Initial check
+            // Initial check when page loads
             fadeInOnScroll();
             
-            // Check on scroll
+            // Check on every scroll
             window.addEventListener('scroll', fadeInOnScroll);
             
-            // Form submission handlers
+            
+            /* --- NEWSLETTER FORM SUBMISSION --- */
             const newsletterForm = document.getElementById('newsletter-form');
             if (newsletterForm) {
                 newsletterForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    // In a real application, you would send the email to a newsletter service
+                    // In production, send data to newsletter service
                     alert('Thank you for subscribing to our newsletter!');
                     this.reset();
                 });
             }
             
-            // BOOKING MODAL FUNCTIONALITY
+            
+            /* ======================================
+               BOOKING MODAL FUNCTIONALITY
+               ====================================== */
+            
+            // Opens booking modal with optional pre-selected tour
             function openBookingModal(tourName = '') {
                 if (tourName) {
                     document.getElementById('booking-tour').value = tourName;
                 }
                 bookingModal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
             }
             
+            // Closes booking modal
             function closeBookingModal() {
                 bookingModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
             }
             
-            // Book Now button handlers
+            // Open modal when clicking any "Book Now" button
             bookNowBtns.forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1649,21 +1664,21 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                 });
             });
             
-            // Close modal when clicking on X
+            // Close modal when clicking X button
             closeModalBtn.addEventListener('click', closeBookingModal);
             
-            // Close modal when clicking outside
+            // Close modal when clicking outside modal content
             window.addEventListener('click', function(e) {
                 if (e.target === bookingModal) {
                     closeBookingModal();
                 }
             });
             
-            // Booking form submission
+            // Handle booking form submission
             bookingForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Get form data
+                // Collect form data
                 const formData = {
                     name: document.getElementById('booking-name').value,
                     email: document.getElementById('booking-email').value,
@@ -1674,7 +1689,7 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                     notes: document.getElementById('booking-notes').value
                 };
                 
-                // In a real application, you would send this data to a server
+                // In production, send this to your backend server
                 console.log('Booking submitted:', formData);
                 
                 // Show success message
@@ -1685,8 +1700,12 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                 closeBookingModal();
             });
             
-            // GALLERY FUNCTIONALITY
-            // Filter gallery items
+            
+            /* ======================================
+               GALLERY FILTER FUNCTIONALITY
+               ====================================== */
+            
+            // Filter gallery images by category
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     // Update active filter button
@@ -1695,7 +1714,7 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                     
                     const filter = this.getAttribute('data-filter');
                     
-                    // Show/hide gallery items based on filter
+                    // Show/hide gallery items based on selected filter
                     galleryItems.forEach(item => {
                         if (filter === 'all' || item.getAttribute('data-category') === filter) {
                             item.style.display = 'block';
@@ -1706,10 +1725,15 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                 });
             });
             
-            // LIGHTBOX FUNCTIONALITY
+            
+            /* ======================================
+               LIGHTBOX (IMAGE POPUP) FUNCTIONALITY
+               ====================================== */
+            
             let currentImageIndex = 0;
             const galleryImages = Array.from(galleryItems).map(item => item.querySelector('img').src);
             
+            // Opens lightbox with specified image
             function openLightbox(index) {
                 currentImageIndex = index;
                 lightboxContent.src = galleryImages[currentImageIndex];
@@ -1717,29 +1741,32 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                 document.body.style.overflow = 'hidden';
             }
             
+            // Closes lightbox
             function closeLightbox() {
                 lightbox.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
             
+            // Navigate to next image in lightbox
             function showNextImage() {
                 currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
                 lightboxContent.src = galleryImages[currentImageIndex];
             }
             
+            // Navigate to previous image in lightbox
             function showPrevImage() {
                 currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
                 lightboxContent.src = galleryImages[currentImageIndex];
             }
             
-            // Open lightbox when clicking on gallery items
+            // Open lightbox when clicking on any gallery item
             galleryItems.forEach((item, index) => {
                 item.addEventListener('click', () => {
                     openLightbox(index);
                 });
             });
             
-            // Lightbox controls
+            // Lightbox control event listeners
             lightboxClose.addEventListener('click', closeLightbox);
             lightboxNext.addEventListener('click', showNextImage);
             lightboxPrev.addEventListener('click', showPrevImage);
@@ -1764,7 +1791,12 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                 }
             });
             
-            // Add some interactive elements to tour cards
+            
+            /* ======================================
+               TOUR CARD HOVER EFFECTS
+               ====================================== */
+            
+            // Enhanced hover effect for tour cards
             const tourCards = document.querySelectorAll('.tour-card');
             tourCards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
@@ -1775,9 +1807,8 @@ Whether you're planning a family getaway, a romantic escape, a business retreat,
                     this.style.transform = 'translateY(-10px) scale(1)';
                 });
             });
-        });
+            
+        }); // End of DOMContentLoaded
     </script>
 </body>
 </html>
-
-
