@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+d<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -542,11 +542,19 @@
             border-radius: var(--border-radius) var(--border-radius) 0 0;
         }
 
+        .modal-image-slider {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
         .modal-slide {
             display: none;
             height: 100%;
+            width: 100%;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
         }
 
         .modal-slide.active {
@@ -1172,6 +1180,8 @@
             </div>
             <div class="destinations-grid">
                 <!-- EDITABLE: Add/remove destination cards -->
+                <!-- Each card MUST have data-destination attribute matching destinationData keys -->
+                
                 <div class="destination-card fade-in" data-destination="lamu">
                     <div class="destination-img" style="background-image: url('images/Lamumain.jpg')"></div>
                     <div class="destination-overlay">
@@ -1205,8 +1215,8 @@
             <button class="close-destination-modal">&times;</button>
             
             <div class="destination-modal-header">
-                <div id="modalSlider">
-                    <!-- Images dynamically inserted -->
+                <div class="modal-image-slider" id="modalSlider">
+                    <!-- Images will be dynamically inserted here -->
                 </div>
                 <div class="slider-nav">
                     <button class="slider-btn slider-prev"><i class="fas fa-chevron-left"></i></button>
@@ -1265,7 +1275,7 @@
                         <div class="testimonial-author">
                             <div class="author-img">SJ</div>
                             <div class="author-info">
-                                <h4>Sarah Johnson</h4>
+                                <h4>BabuSaga</h4>
                                 <p>Diani Beach Tour • May 2024</p>
                             </div>
                         </div>
@@ -1283,7 +1293,7 @@
                         <div class="testimonial-author">
                             <div class="author-img">MC</div>
                             <div class="author-info">
-                                <h4>Michael Chen</h4>
+                                <h4>Ahmed</h4>
                                 <p>Lamu Cultural Tour • June 2024</p>
                             </div>
                         </div>
@@ -1638,10 +1648,14 @@
         const destinationData = {
             lamu: {
                 title: "Lamu Island",
-                images: [
-                    "images/Lamumain.jpg",
-                    "images/shela_beach_lamu07.jpg",
-                    "images/Oldtown3.jpg"
+                images: [                    
+                     "images/Lamumain.jpg",
+                     "images/Lamu1.jpg",
+                     "images/Lamu2.jpg",
+					 "images/Lamu3.jpg",
+					 "images/Lamu4.jpg",
+					 "images/map.jpg"
+
                 ],
                 description: "Lamu Island is a UNESCO World Heritage Site and Kenya's oldest living town. Experience centuries of Swahili culture, stunning architecture, and pristine beaches in this car-free paradise.",
                 highlights: [
@@ -1731,9 +1745,11 @@
             diani: {
                 title: "Diani Beach",
                 images: [
+                    
                     "images/DianiAriel.jpg",
                     "images/Beach1.jpg",
-                    "images/DianiBeachBoat.jpg"
+                    "images/DianiBeachBoat.jpg",
+					"images/dianiAfricaPool.jpg"
                 ],
                 description: "Diani Beach is renowned for its pristine white sand beaches and crystal-clear turquoise waters. Perfect for relaxation, water sports, and marine adventures.",
                 highlights: [
@@ -1810,9 +1826,12 @@
             tsavo: {
                 title: "Tsavo National Park",
                 images: [
+                    
                     "images/sarovasaltlick.jpg",
-                    "images/dianiAfricaPool.jpg",
-                    "images/Sunset1.jpg"
+                    "images/Elephant.jpg",
+                    "images/ShimbaSunset.jpg",
+					"images/Warthog.jpg"
+					
                 ],
                 description: "Tsavo is one of Kenya's largest national parks, famous for red elephants, diverse wildlife, and stunning landscapes. Experience authentic African safari adventure.",
                 highlights: [
@@ -2057,20 +2076,34 @@
 
             function loadDestinationModal(dest) {
                 const data = destinationData[dest];
-                if (!data) return;
+                if (!data) {
+                    console.error('Destination data not found for:', dest);
+                    return;
+                }
+
+                console.log('Loading destination:', dest, data); // Debug log
 
                 // Set title
                 document.getElementById('modalTitle').textContent = data.title;
                 
-                // Load images
+                // Load images - FIXED VERSION
                 const slider = document.getElementById('modalSlider');
-                slider.innerHTML = '';
+                slider.innerHTML = ''; // Clear existing slides
+                
                 data.images.forEach((img, index) => {
                     const slide = document.createElement('div');
-                    slide.className = 'modal-slide' + (index === 0 ? ' active' : '');
+                    slide.className = 'modal-slide';
+                    if (index === 0) {
+                        slide.classList.add('active');
+                    }
                     slide.style.backgroundImage = `url('${img}')`;
+                    slide.style.backgroundSize = 'cover';
+                    slide.style.backgroundPosition = 'center';
+                    
+                    console.log('Adding slide:', img); // Debug log
                     slider.appendChild(slide);
                 });
+                
                 currentSlideIndex = 0;
 
                 // Load overview
